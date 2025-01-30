@@ -11,8 +11,8 @@ export default function Navbar() {
 
 
   return (
-    <nav className="bg-white shadow dark:bg-gray-800">
-      <div className="container px-6 py-4 mx-auto">
+    <nav className="bg-white shadow dark:bg-gray-800 fixed top-0 inset-x-0 z-50">
+      <div className="container px-6 py-7 mx-auto">
         <div className="lg:flex lg:items-center">
           <div className="flex items-center justify-between">
             <Link to={'/'}>
