@@ -119,24 +119,29 @@ export default function Card({ product }) {
         <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{  margin: "-50px" }}
+            viewport={{ margin: "-50px" }}
             transition={{ duration: 0.5, bounce: 0.3 }}
             className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transform transition-all duration-300 hover:-translate-y-1"
         >
+
             <div className="relative overflow-hidden">
-                <motion.img
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    src={product.imageCover}
-                    alt={product.title}
-                    className="w-full h-64 object-cover"
-                />
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-black bg-opacity-10"
-                />
+                <Link to={`/product/${product._id}`}>
+
+                    <motion.img
+                        whileHover={{ scale: 1.9 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        src={product.imageCover}
+                        alt={product.title}
+                        className="w-full h-64 object-cover"
+                    />
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 bg-black bg-opacity-10"
+                    />
+                </Link>
+
                 <motion.button
                     whileHover={{ scale: 1.1, rotate: 6 }}
                     whileTap={{ scale: 0.95 }}
@@ -144,32 +149,32 @@ export default function Card({ product }) {
                 >
                     <BiHeart className="h-5 w-5 text-gray-600 hover:text-red-500 transition-colors duration-300" />
                 </motion.button>
-                <motion.div
-                    initial={{ y: "100%" }}
-                    whileHover={{ y: 0 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent"
-                >
-                    <p className="text-white text-lg line-clamp-3 italic">{product.description}</p>
-                </motion.div>
+
             </div>
             <div className="p-5">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="flex justify-between items-start mb-3"
-                >
-                    <h3 className="text-lg font-semibold text-gray-800 line-clamp-1 group-hover:text-green-600 transition-colors duration-300">
-                        {product.title}
-                    </h3>
-                    <motion.span
-                        whileHover={{ scale: 1.1 }}
-                        className="text-xl font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full"
+                <Link to={`/product/${product._id}`}>
+
+                    <p className="text-gray-800 text-sm">{product.category?.name}</p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="flex justify-between items-center mb-3"
                     >
-                        ${product.price}
-                    </motion.span>
-                </motion.div>
+
+                        <h3 className="text-lg font-semibold text-gray-800 line-clamp-1 group-hover:text-green-600 transition-colors duration-300">
+                            {product.title}
+                        </h3>
+                        <motion.span
+                            whileHover={{ scale: 1.1 }}
+                            className="text-xl font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full"
+                        >
+                            ${product.price}
+                        </motion.span>
+                    </motion.div>
+
+                </Link>
                 <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

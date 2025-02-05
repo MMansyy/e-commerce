@@ -4,6 +4,9 @@ import Register from "./pages/Register/Register"
 import Login from "./pages/Login/Login"
 import './App.css'
 import Home from "./pages/Home/Home"
+import { TokenProvider } from "./Context/TokenContext"
+import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes"
+import ProductItem from "./pages/ProductItem/ProductItem"
 
 export default function App() {
 
@@ -12,20 +15,32 @@ export default function App() {
       path: "/", element: <Mainlayout />,
       children: [
         {
-          index: true, element: <Home />
-        },
-        {
           path: "register", element: <Register />
         },
         {
           path: 'login', element: <Login />
         },
-
+        {
+          index: true, element:
+            <ProtectedRoutes>
+              <Home />
+            </ProtectedRoutes>
+        },
+        {
+          path: 'product/:id', element:
+            <ProtectedRoutes>
+              <ProductItem />
+            </ProtectedRoutes>
+        }
       ]
     }
   ])
 
-  return <RouterProvider router={router} />
+  return (
+    <TokenProvider>
+      <RouterProvider router={router} />
+    </TokenProvider>
+  )
 
 
 }

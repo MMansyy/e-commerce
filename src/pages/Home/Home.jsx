@@ -1,15 +1,46 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Card from "../../components/Card/Card"
 import { BsArrowRight } from "react-icons/bs";
 import img from '../../assets/hero.avif'
+import TextHeader from "../../components/TextHeader/TextHeader";
+import Slider from "react-slick";
 
 export default function Home() {
 
     const [products, setproducts] = useState([])
+    const [categories, setCategories] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
+    const hasVisited = localStorage.getItem("hasVisited");
 
-    let getProducts = async () => {
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        swipeToSlide: true,
+        autoplay: true,
+        speed: 20000,
+        autoplaySpeed: 1000,
+        cssEase: "linear"
+    };
+
+
+
+
+    const getCategories = async () => {
+        await axios.get('https://ecommerce.routemisr.com/api/v1/categories')
+            .then((response) => {
+                console.log(response.data.data)
+                setCategories(response.data.data)
+            })
+            .catch((error) => console.log(error))
+    }
+
+
+
+    const getProducts = async () => {
         let res = await axios.get('https://ecommerce.routemisr.com/api/v1/products')
         setproducts(res.data.data)
         console.log(res.data.data)
@@ -18,13 +49,45 @@ export default function Home() {
 
     useEffect(() => {
         getProducts()
+        getCategories()
+
+        if (!hasVisited) {
+            localStorage.setItem("hasVisited", true)
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 3500);
+        } else {
+            setIsLoading(false)
+        }
+
+
     }, [])
 
 
 
     return (
         <>
-            <div className="bg-[#f0f9f0] py-16 mt-16">
+            <AnimatePresence>
+                {isLoading && (
+                    <motion.div
+                        className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-green-100 z-50"
+                        initial={{ opacity: 1 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <motion.h1
+                            className="text-4xl font-bold"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 1 }}
+                        >
+                            Modern E-Commerce
+                        </motion.h1>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            <div className="bg-[#f0f9f0] py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col md:flex-row items-center justify-between">
                         <motion.div
@@ -33,18 +96,11 @@ export default function Home() {
                             transition={{ duration: 0.5 }}
                             className="md:w-1/2 mb-8 md:mb-0"
                         >
-                            <motion.h1
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
-                                className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
-                            >
-                                Discover Sustainable Shopping
-                            </motion.h1>
+                            <TextHeader timer={hasVisited ? 0.5 : 4} />
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 }}
+                                transition={{ delay: 0.9 }}
                                 className="text-lg text-gray-600 mb-6"
                             >
                                 Shop eco-friendly products that make a difference. Join us in creating a better tomorrow.
@@ -60,7 +116,7 @@ export default function Home() {
                                         className="absolute inset-0 bg-green-700"
                                         initial={{ scale: 0, opacity: 0 }}
                                         whileHover={{ scale: 1, opacity: 1 }}
-                                        transition={{ duration: 0.3 }}
+                                        transition={{ duration: 0.9 }}
                                     />
                                     <motion.div className="relative z-10 flex items-center">
                                         <span>Shop Now</span>
@@ -110,11 +166,31 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
+            <div>
+                <h3 className="text-3xl font-bold text-center text-gray-800 mt-16 mb-8">Our popular Categories</h3>
+            </div>
+            <Slider className="mt-12 mb-24 overflow-hidden" {...settings}>
+                {
+                    categories.map((category) => {
+                        return <div key={category.id} className="bg-white rounded-lg shadow-md ">
+                            <img src={category.image} className="w-full h-64" alt="" />
+                            <p>{category.name}</p>
+                        </div>
+                    })
+                }
+            </Slider>
             <div className="container">
+
+
+                <div>
+                    <h3 className="text-3xl font-bold text-center text-gray-800 mt-16 mb-4">Our Products</h3>
+                    <p className="text-center text-gray-600 mb-16">Every thing you need you will find it here.</p>
+                </div>
                 <div className='flex flex-wrap justify-center items-center'>
                     {products.map((product) => {
                         return (
-                            <div key={product.id} className=" sm:w-1/2 md:w-1/3  lg:w-1/4 p-5 ">
+                            <div key={product.id} className=" w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-2 ">
                                 <Card product={product} />
                             </div>
                         )
