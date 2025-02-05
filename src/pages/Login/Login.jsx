@@ -2,12 +2,29 @@ import img from '../../assets/freshcart-logo.svg'
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import 'animate.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import axios from 'axios';
+import Loader from '../../components/Loader/Loader';
+import { TokenContext } from '../../Context/TokenContext';
 export default function Login() {
 
+    const [isLoading, setisLoading] = useState(false)
+    const [errMsg, setErrMsg] = useState('')
+    const { setToken } = useContext(TokenContext)
+    const navigate = useNavigate()
 
-    const handleLogin = (values) => {
-        console.log(values)
+    async function handleLogin(values) {
+        setisLoading(true)
+        const data = axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin', values)
+            .then((res) => {
+                localStorage.setItem('token', res.data.token)
+                setToken(res.data.token)
+                navigate('/')
+
+            })
+            .catch((err) => setErrMsg(err.response.data.message))
+            .finally(() => setisLoading(false))
     }
 
     const validationSchema = Yup.object({
@@ -27,7 +44,10 @@ export default function Login() {
 
 
     return (
+
         <div className='bg-gray-50  py-5'>
+
+            {isLoading && <Loader />}
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm animate__animated animate__backInDown">
                     <img
@@ -42,6 +62,7 @@ export default function Login() {
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm animate__animated animate__backInDown">
                     <form onSubmit={formik.handleSubmit} className="space-y-6">
                         <div>
+                            {errMsg && <p className='text-red-500 mb-2'>{errMsg}</p>}
                             <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                                 Email address
                             </label>
