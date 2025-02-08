@@ -7,6 +7,9 @@ import Home from "./pages/Home/Home"
 import { TokenProvider } from "./Context/TokenContext"
 import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes"
 import ProductItem from "./pages/ProductItem/ProductItem"
+import { Toaster } from "react-hot-toast"
+import { CartProvider } from "./Context/CartContext"
+import Cart from "./pages/Cart/Cart"
 
 export default function App() {
 
@@ -31,6 +34,12 @@ export default function App() {
             <ProtectedRoutes>
               <ProductItem />
             </ProtectedRoutes>
+        },
+        {
+          path: 'cart', element:
+            <ProtectedRoutes>
+              <Cart />
+            </ProtectedRoutes>
         }
       ]
     }
@@ -38,7 +47,10 @@ export default function App() {
 
   return (
     <TokenProvider>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <Toaster position="bottom-right" />
+        <RouterProvider router={router} />
+      </CartProvider>
     </TokenProvider>
   )
 

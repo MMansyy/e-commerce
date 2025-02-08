@@ -114,7 +114,7 @@ import { BiHeart } from "react-icons/bi";
 
 
 
-export default function Card({ product }) {
+export default function Card({ product, addToCartHandler }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -163,7 +163,7 @@ export default function Card({ product }) {
                         className="flex justify-between items-center mb-3"
                     >
 
-                        <h3 className="text-lg font-semibold text-gray-800 line-clamp-1 group-hover:text-green-600 transition-colors duration-300">
+                        <h3 className="text-lg font-semibold text-gray-800 line-clamp-2 group-hover:text-green-600 transition-colors duration-300">
                             {product.title}
                         </h3>
                         <motion.span
@@ -179,6 +179,9 @@ export default function Card({ product }) {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full bg-green-600 text-white px-4 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-green-700 transform transition-all duration-300 hover:shadow-lg"
+                    onClick={() => {
+                        addToCartHandler(product._id)
+                    }}
                 >
                     <motion.div
                         whileHover={{ rotate: 12 }}

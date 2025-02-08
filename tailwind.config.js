@@ -6,6 +6,15 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes: {
+        'logo-cloud': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - 4rem))' },
+        },
+      },
+      animation: {
+        'logo-cloud': 'logo-cloud 90s linear infinite', // Adjust duration and timing as needed for your design.
+      },
       container: {
         center: true, // Center the container (like Bootstrap)
         padding: '1rem', // Add default padding

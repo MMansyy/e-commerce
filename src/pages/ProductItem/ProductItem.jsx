@@ -1,18 +1,32 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import toast from "react-hot-toast";
+import { CartContext } from "../../Context/CartContext";
 
 export default function ProductItem() {
 
     const { id } = useParams()
     const [product, setProduct] = useState({});
+    const { addToCart , setNumOfCartItems } = useContext(CartContext)
 
-    function getProduct() {
-        axios(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
+    async function addToCartHandler() {
+        let res = await addToCart(id);
+        console.log('mansy', res)
+        setNumOfCartItems(res.numOfCartItems)
+        if (res.status === 'success') {
+            toast.success('Product added to cart successfully' , {duration: 3500})
+        } else {
+            toast.error('Something went wrong')
+        }
+    }
+
+    async function getProduct() {
+        await axios(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
             .then((response) => {
                 setProduct(response.data.data)
                 console.log(response.data.data)
@@ -83,6 +97,9 @@ export default function ProductItem() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-lg shadow-md transition-all duration-300"
+                    onClick={() => {
+                        addToCartHandler()
+                    }}
                 >
                     Add to Cart
                 </motion.button>
