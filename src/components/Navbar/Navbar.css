@@ -1,0 +1,64 @@
+.nav-special {
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+
+.nav-special:focus,
+.nav-special:hover {
+    color: #000;
+}
+
+.nav-special:focus:after,
+.nav-special:hover:after {
+    color: #000;
+    width: 100%;
+    left: 0%;
+}
+
+
+
+
+
+
+
+.nav-special:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #000;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
+
+
+.nav-special.active {
+    color: #000;
+}
+
+.active:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 0%;
+    color: #000;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
