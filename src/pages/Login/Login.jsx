@@ -1,4 +1,4 @@
-import img from '../../assets/freshcart-logo.svg'
+import img from '../../assets/FreshCart-logo.svg'
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import 'animate.css'
@@ -20,6 +20,7 @@ export default function Login() {
             .then((res) => {
                 localStorage.setItem('token', res.data.token)
                 setToken(res.data.token)
+                
                 navigate('/')
 
             })
@@ -49,7 +50,7 @@ export default function Login() {
 
             {isLoading && <Loader />}
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-                <div className="sm:mx-auto sm:w-full sm:max-w-sm animate__animated animate__backInDown">
+                <div className="sm:mx-auto sm:w-full sm:max-w-sm animate__animated animate__zoomIn">
                     <img
                         alt="Your Company"
                         src={img}
@@ -59,7 +60,7 @@ export default function Login() {
                         Sign in to your account
                     </h2>
                 </div>
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm animate__animated animate__backInDown">
+                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm animate__animated animate__zoomIn">
                     <form onSubmit={formik.handleSubmit} className="space-y-6">
                         <div>
                             {errMsg && <p className='text-red-500 mb-2'>{errMsg}</p>}
@@ -87,9 +88,9 @@ export default function Login() {
                                     Password
                                 </label>
                                 <div className="text-sm">
-                                    <a href="#" className="font-semibold text-green-600 hover:text-green-500">
+                                    <Link to={'/forgotpassword'} className="font-semibold text-green-600 hover:text-green-500">
                                         Forgot password?
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="mt-2">

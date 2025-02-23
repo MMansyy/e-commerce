@@ -1,0 +1,11 @@
+.slick-arrow {
+    z-index: 5;
+    width: 100px;
+    height: 100px;
+    margin: 0 30px;
+    
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 45px;
+}

@@ -22,7 +22,7 @@ export default function TextHeader({ timer }) {
             variants={container}
             initial="hidden"
             animate="show"
-            className=" font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
+            className=" font-display text-5xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
         >
             {words.split(" ").map((word, i) => (
 
