@@ -1,8 +1,8 @@
-import logo from '../../assets/freshcart-logo.svg'
+import logo from '../../assets/FreshCart-logo.svg'
 
 export default function Footer() {
   return (
-    <footer className="font-sans  tracking-wide bg-gray-100 px-10 pt-12 pb-6">
+    <footer className="  tracking-wide bg-gray-100 px-10 pt-12 pb-6">
       <div className="container">
 
         <div className="flex flex-wrap justify-between gap-10">

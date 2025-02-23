@@ -23,7 +23,7 @@ export default function Loader() {
                         </g>
                     </svg>
                     <div className="preloader__text">
-                        <p className="preloader__msg">Bringing you the goods…</p>
+                        <p className="preloader__msg"></p>
                         <p className="preloader__msg preloader__msg--last">This is taking long. Something’s wrong.</p>
                     </div>
                 </div>

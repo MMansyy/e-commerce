@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 
 export default function LogoCloud() {
@@ -8,11 +9,11 @@ export default function LogoCloud() {
 
     async function getBrands() {
         await axios.get('https://ecommerce.routemisr.com/api/v1/brands')
-            .then((res) =>{ setlogos(res.data.data) 
-            console.log(res.data.data)
+            .then((res) => {
+                setlogos(res.data.data)
+
             })
-            .catch((err) => console.log(err)
-            )
+            .catch((err) => console.log(err))
     }
 
     useEffect(() => {
@@ -38,12 +39,12 @@ export default function LogoCloud() {
                                 className="flex shrink-0 animate-logo-cloud flex-row justify-around gap-6"
                             >
                                 {logos?.map((logo) => (
-                                    <img
-                                        key={logo._id}
+                                    <img key={logo._id}
                                         src={logo.image}
                                         className="h-28 w-full px-2"
                                         alt={`${logo.name}`}
                                     />
+                                    // </Link>
                                 ))}
                             </div>
                         ))}
