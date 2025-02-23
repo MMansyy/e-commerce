@@ -1,4 +1,4 @@
-import img from '../../assets/FreshCart-logo.svg'
+import img from '../../assets/freshcart-logo.svg'
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import 'animate.css'
