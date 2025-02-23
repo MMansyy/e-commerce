@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import logo from '../../assets/FreshCart-logo.svg'
+import logo from '../../assets/freshCart-logo.svg'
 import { IoMdClose } from "react-icons/io";
 import { IoMenuOutline } from "react-icons/io5";
 import { Link, NavLink, useNavigate } from "react-router-dom";
