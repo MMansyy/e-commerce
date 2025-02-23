@@ -10,6 +10,9 @@ const headers = {
     token: localStorage.getItem('token')
 }
 
+console.log(headers);
+
+
 function addToWhishList(id) {
     return axios.post('https://ecommerce.routemisr.com/api/v1/wishlist'
         , { productId: id }, { headers })
