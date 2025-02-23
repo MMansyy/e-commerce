@@ -1,4 +1,4 @@
-import logo from '../../assets/FreshCart-logo.svg'
+import logo from '../../assets/freshcart-logo.svg'
 
 export default function Footer() {
   return (
