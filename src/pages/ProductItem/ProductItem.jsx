@@ -27,7 +27,7 @@ export default function ProductItem() {
     const [product, setProduct] = useState({});
     const { addToCart, setNumOfCartItems } = useContext(CartContext)
     const [open, setopen] = useState(false)
-    
+
 
 
     function isInWhishList(id) {
@@ -41,7 +41,7 @@ export default function ProductItem() {
 
     async function addToCartHandler(id) {
         let res = await addToCart(id)
-        
+
         setNumOfCartItems(res.numOfCartItems)
         if (res.status === 'success') {
             toast.success('Product added to cart successfully', { duration: 3500 })
@@ -96,7 +96,7 @@ export default function ProductItem() {
         await axios.get(`https://ecommerce.routemisr.com/api/v1/products?category=${product?.category?._id}`)
             .then((res) => {
                 setProducts(res.data.data)
-                
+
             })
             .catch((err) => console.log(err))
     }
@@ -163,7 +163,7 @@ export default function ProductItem() {
 
     return (
         <>
-        {loader && <Loader />}
+            {loader && <Loader />}
             <div className="max-w-6xl mx-auto p-8  my-6 flex flex-col md:flex-row gap-8 bg-gray-100 text-gray-900 rounded-xl shadow-xl">
                 <div className="w-full md:w-1/2">
                     <Slider {...settings}>
@@ -188,7 +188,7 @@ export default function ProductItem() {
 
                     <div id="accordion-collapse" onClick={() => setopen(!open)} data-accordion="collapse">
                         <h2 id="accordion-collapse-heading-1">
-                            <button type="button" className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 rounded-t-xl dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3 transition duration-300" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+                            <button type="button" className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 rounded-t-xl   hover:bg-gray-100  gap-3 transition duration-300" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
                                 <span>Description</span>
                                 <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5 5 1 1 5" />
@@ -196,8 +196,8 @@ export default function ProductItem() {
                             </button>
                         </h2>
                         <div id="accordion-collapse-body-1" className={`${!open ? "max-h-0  top-0 " : 'max-h-96'} transition-all overflow-hidden duration-500`} aria-labelledby="accordion-collapse-heading-1">
-                            <div className="p-5 border  border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                                <p className="mb-2 text-gray-500 dark:text-gray-400">{product.description}</p>
+                            <div className="p-5 border  border-gray-200  ">
+                                <p className="mb-2 text-gray-500 ">{product.description}</p>
                             </div>
                         </div>
                     </div>
