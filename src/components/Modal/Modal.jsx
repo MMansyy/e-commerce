@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import * as Yup from 'yup';
 import { TokenContext } from "../../Context/TokenContext";
 import toast from "react-hot-toast";
+import { FaTimes } from "react-icons/fa";
 
 
 export default function Modal({ isOpen, setIsOpen, tokenData }) {
@@ -72,7 +73,14 @@ export default function Modal({ isOpen, setIsOpen, tokenData }) {
                         onClick={(e) => e.stopPropagation()}
                         className="bg-white  text-white p-6 rounded-lg w-full max-w-lg shadow-xl cursor-default relative overflow-hidden"
                     >
-
+                        <motion.button
+                            onClick={() => setIsOpen(false)}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="absolute top-4 right-4 p-3 bg-white rounded-full shadow-lg"
+                        >
+                            <FaTimes className={` h-5 w-5 text-gray-300  transition-colors duration-300`} />
+                        </motion.button>
                         <h2 className="text-black p-5 text-xl font-semibold">Update Your Information</h2>
                         <form onSubmit={formik.handleSubmit}>
                             <div className="flex p-5 flex-wrap items-center gap-2">
@@ -82,7 +90,7 @@ export default function Modal({ isOpen, setIsOpen, tokenData }) {
                                     {(formik.errors.name && formik.touched.name) ? <p className='text-red-500'>{formik.errors.name}</p> : null}
                                 </div>
                                 <div className="relative z-0 w-full mb-5 group ">
-                                    <input disabled  value={tokenData.email} type="email" name="email" id="email" className="block opacity-70 cursor-not-allowed px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " required />
+                                    <input disabled value={tokenData.email} type="email" name="email" id="email" className="block opacity-70 cursor-not-allowed px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " required />
                                     <label htmlFor="email" className="absolute  text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-green-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Email address</label>
                                 </div>
                                 <div className="relative z-0 w-full mb-5 group ">

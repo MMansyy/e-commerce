@@ -5,6 +5,7 @@ import { useContext } from "react";
 import * as Yup from 'yup';
 import { TokenContext } from "../../Context/TokenContext";
 import toast from "react-hot-toast";
+import { FaTimes } from "react-icons/fa";
 
 
 export default function PasswordModal({ isOpenPass, setIsOpenPass }) {
@@ -54,13 +55,20 @@ export default function PasswordModal({ isOpenPass, setIsOpenPass }) {
                     className="bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center overflow-y-scroll "
                 >
                     <motion.div
-                        initial={{ scale: 0, rotate: "12.5deg" }}
-                        animate={{ scale: 1, rotate: "0deg" }}
+                        initial={{ scale: 0, rotate: "20deg" }}
+                        animate={{ scale: 1, rotate: "0deg"  }}
                         exit={{ scale: 0, rotate: "0deg" }}
                         onClick={(e) => e.stopPropagation()}
                         className="bg-white  text-white p-6 rounded-lg w-full max-w-lg shadow-xl cursor-default relative overflow-hidden"
                     >
-
+                        <motion.button
+                            onClick={() => setIsOpenPass(false)}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="absolute top-4 right-4 p-3 bg-white rounded-full shadow-lg"
+                        >
+                            <FaTimes className={` h-5 w-5 text-gray-300  transition-colors duration-300`} />
+                        </motion.button>
                         <h2 className="text-black p-5 text-xl font-semibold">Update Your Paswword</h2>
                         <form onSubmit={formik.handleSubmit}>
                             <div className="flex p-5 flex-wrap items-center gap-2">
