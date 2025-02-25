@@ -251,11 +251,11 @@ export default function Home() {
                 <div className="relative z-10 flex flex-col items-center justify-center text-white text-center p-10">
                     <h2 className="text-5xl font-bold">Up to 50% Off</h2>
                     <p className="text-xl mt-2">Winter Sale</p>
-                    <button className="cursor-pointer rounded-lg mt-10 font-semibold overflow-hidden relative z-100 border border-green-500 group px-8 py-2">
+                    <Link to={'/products'} className="cursor-pointer rounded-lg mt-10 font-semibold overflow-hidden relative z-100 border border-green-500 group px-8 py-2">
                         <span className="relative z-10  group-hover:text-white text-xl duration-500">Shop now</span>
                         <span className="absolute w-full h-full bg-green-500 -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500" />
                         <span className="absolute w-full h-full bg-green-500 -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500" />
-                    </button>
+                    </Link>
 
                 </div>
             </div>
