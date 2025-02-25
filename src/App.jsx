@@ -22,6 +22,7 @@ import Brands from "./pages/Brands/Brands"
 import Brand from "./pages/Brand/Brand"
 import Orders from "./components/PesronalOrders/Orders"
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
+import NotFOund from "./pages/NotFound/NotFOund"
 
 export default function App() {
 
@@ -110,7 +111,7 @@ export default function App() {
             </ProtectedRoutes>
         },
         {
-          path: '*', element: <h1>404</h1>
+          path: '*', element: <NotFOund />
         }
       ]
     }
