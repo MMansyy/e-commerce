@@ -56,6 +56,7 @@ export default function Home() {
 
 
     async function addToCartHandler(id) {
+        setloader(true)
         let res = await addToCart(id)
 
         setNumOfCartItems(res.numOfCartItems)
@@ -64,6 +65,7 @@ export default function Home() {
         } else {
             toast.error('Something went wrong', { duration: 3500 })
         }
+        setloader(false)
     }
 
     async function removeFromWhishListHandler(id) {
