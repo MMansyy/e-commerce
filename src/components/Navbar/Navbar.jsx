@@ -85,23 +85,31 @@ export default function Navbar() {
 
                 }} className=' text-2xl cursor-pointer text-gray-700 hover:text-gray-800 transition-all duration-200' />
                 {user &&
-                  <div id="userDropdown" className="z-10 absolute top-8 border-2 right-0 bg-white divide-y divide-gray-200 rounded-lg shadow-sm w-44 ">
-                    <div className="px-4 py-3 text-sm text-gray-900 ">
-                      <p className='text-base font-semibold'>{tokeninfo.name || 'User'}</p>
+                  <>
+                    <div className='w-screen h-screen fixed top-0 left-0 z-10' onClick={() => {
+                      setuser(false)
+                      settoggeld(false)
+                    }
+                    }></div>
+
+                    <div id="userDropdown" className="z-10 absolute top-8 border-2 right-0 bg-white divide-y divide-gray-200 rounded-lg shadow-sm w-44 ">
+                      <div className="px-4 py-3 text-sm text-gray-900 ">
+                        <p className='text-base font-semibold'>{tokeninfo.name || 'User'}</p>
+                      </div>
+                      <ul className="py-2 text-sm text-gray-700 " aria-labelledby="avatarButton">
+                        <li>
+                          <Link to={'/account'} onClick={() => { setuser(!user); settoggeld(false) }} className="block px-4 py-2 hover:bg-gray-100">  Account</Link>
+                        </li>
+                      </ul>
+                      <div className="py-1">
+                        <button onClick={() => {
+                          settoggeld(false)
+                          setuser(false)
+                          handleLogout()
+                        }} className="block px-4 w-full text-left py-2 text-sm text-gray-700 hover:bg-gray-100">   Sign out</button>
+                      </div>
                     </div>
-                    <ul className="py-2 text-sm text-gray-700 " aria-labelledby="avatarButton">
-                      <li>
-                        <Link to={'/account'} onClick={() => { setuser(!user); settoggeld(false) }} className="block px-4 py-2 hover:bg-gray-100">  Account</Link>
-                      </li>
-                    </ul>
-                    <div className="py-1">
-                      <button onClick={() => {
-                        settoggeld(false)
-                        setuser(false)
-                        handleLogout()
-                      }} className="block px-4 w-full text-left py-2 text-sm text-gray-700 hover:bg-gray-100">   Sign out</button>
-                    </div>
-                  </div>
+                  </>
                 }
               </div>}
             </div>
