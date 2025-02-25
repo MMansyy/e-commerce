@@ -100,7 +100,7 @@ export default function Cart() {
                     </div>
                     <div className="grid lg:grid-cols-3 gap-6 relative mt-6">
                         <div className="lg:col-span-2 space-y-6">
-                            {CartData?.products?.length === 0  && <div className="bg-white p-4 shadow-[0_2px_9px_-3px_rgba(61,63,68,0.3)] relative">
+                            {(CartData?.products?.length === 0 || !CartData ) && <div className="bg-white p-4 shadow-[0_2px_9px_-3px_rgba(61,63,68,0.3)] relative">
                                 <h3 className="text-lg font-bold text-gray-800">Your cart is empty</h3>
                                 <p className="text-gray-500 mt-4">You have no items in your shopping cart. Start adding items to your cart.</p>
                             </div>}
