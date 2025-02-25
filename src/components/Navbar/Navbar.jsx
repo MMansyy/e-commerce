@@ -51,15 +51,6 @@ export default function Navbar() {
                 <NavLink onClick={() => settoggeld(false)} to='/products' className="mt-2 transition-colors duration-300 transform lg:mt-0 lg:mx-4 hover:text-gray-900  nav-special">Products</NavLink>
                 <NavLink onClick={() => settoggeld(false)} to='/categories' className="mt-2 transition-colors duration-300 transform lg:mt-0 lg:mx-4 hover:text-gray-900  nav-special">Categories</NavLink>
                 <NavLink onClick={() => settoggeld(false)} to='/brands' className="mt-2 transition-colors duration-300 transform lg:mt-0 lg:mx-4 hover:text-gray-900  nav-special">Brands</NavLink>
-                {/* <div className="relative mt-4 lg:mt-0 lg:mx-4 ">
-                  <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <svg className="w-4 h-4 text-gray-600 " viewBox="0 0 24 24" fill="none">
-                      <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                  <input type="text" className="w-full py-1 pl-10 pr-4 text-gray-700 placeholder-gray-600 bg-white border-b border-gray-600 dark:placeholder-gray-300 dark:focus:border-gray-300 lg:w-56 lg:border-transparent dark:bg-gray-800  focus:outline-none focus:border-gray-600" placeholder="Search" />
-                </div> */}
-
               </>}
             </div>
             <div className="flex justify-center items-center mt-6 lg:flex lg:mt-0 lg:-mx-2">
@@ -88,10 +79,8 @@ export default function Navbar() {
                   <>
                     <div className='w-screen h-screen fixed top-0 left-0 z-10' onClick={() => {
                       setuser(false)
-                      settoggeld(false)
                     }
                     }></div>
-
                     <div id="userDropdown" className="z-10 absolute top-8 border-2 right-0 bg-white divide-y divide-gray-200 rounded-lg shadow-sm w-44 ">
                       <div className="px-4 py-3 text-sm text-gray-900 ">
                         <p className='text-base font-semibold'>{tokeninfo.name || 'User'}</p>
