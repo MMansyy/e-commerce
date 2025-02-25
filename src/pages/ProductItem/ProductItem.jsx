@@ -40,14 +40,15 @@ export default function ProductItem() {
     }
 
     async function addToCartHandler(id) {
+        setloader(true)
         let res = await addToCart(id)
-
         setNumOfCartItems(res.numOfCartItems)
         if (res.status === 'success') {
             toast.success('Product added to cart successfully', { duration: 3500 })
         } else {
             toast.error('Something went wrong', { duration: 3500 })
         }
+        setloader(false)
     }
 
 

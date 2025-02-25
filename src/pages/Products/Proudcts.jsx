@@ -71,20 +71,22 @@ export default function Proudcts() {
         let shuffeld = [...res.data.data, ...res2.data.data]
         setproducts(shuffeld)
         setfilterproducts(shuffeld)
-        
+
         setloader(false)
 
     }
 
     async function addToCartHandler(id) {
+        setloader(true)
         let res = await addToCart(id)
-        
+
         setNumOfCartItems(res.numOfCartItems)
         if (res.status === 'success') {
             toast.success('Product added to cart successfully', { duration: 3500 })
         } else {
             toast.error('Something went wrong', { duration: 3500 })
         }
+        setloader(false)
     }
 
     useEffect(() => {
@@ -102,7 +104,7 @@ export default function Proudcts() {
             return
         }
         filterd = filterd.filter((product) => product.category?.name == filter)
-        
+
         setfilterproducts(filterd)
     }
 
@@ -111,7 +113,7 @@ export default function Proudcts() {
         let filterd = [...products]
         filterd = filterd.filter((product) => product.title.toLowerCase().includes(search.toLowerCase()))
         setfilterproducts(filterd)
-        
+
 
     }
 
