@@ -153,7 +153,7 @@ export default function Footer() {
               <a href="javascript:void(0)" className="hover:text-gray-800 text-gray-600 text-sm">Security</a>
             </li>
           </ul>
-          <p className="text-gray-600 text-sm md:ml-auto">© ReadymadeUI. All rights reserved.</p>
+          <p className="text-gray-600 text-sm md:ml-auto">© Muhammed Hussein. All rights reserved.</p>
         </div>
       </div>
     </footer>
