@@ -6,7 +6,6 @@ import Loader from "../../components/Loader/Loader"
 import { Link } from "react-router-dom"
 import OrderModal from "../../components/Modal/OrderModal"
 import axios from "axios"
-import { s } from "framer-motion/client"
 
 export default function Cart() {
 
@@ -21,14 +20,14 @@ export default function Cart() {
         let res = await getCart()
         setCartData(res.data)
         setisLoading(false)
-        
+
     }
 
     async function removeFromCartHandler(id) {
         setisLoading(true)
         let res = await removeFromCart(id)
         setisLoading(false)
-        
+
         setNumOfCartItems(res.numOfCartItems)
         if (res.status === 'success') {
             toast.success('Product removed from cart successfully', {
@@ -47,7 +46,7 @@ export default function Cart() {
         await axios.put(`https://ecommerce.routemisr.com/api/v1/cart/${id}`, { count: Number(count) }, {
             headers: { token: localStorage.getItem('token') }
         }).then(res => {
-            
+
             toast.success('Quantity updated successfully', {
                 duration: 3500, style: {
                     padding: '20px',
@@ -55,7 +54,7 @@ export default function Cart() {
             })
             setCartData(res.data.data)
         }).catch(err => {
-            
+
             toast.error('Something went wrong')
         })
         setisLoading(false)
