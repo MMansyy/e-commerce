@@ -79,8 +79,8 @@ export const CartProvider = ({ children }) => {
 
 
     function createOnlineOrder(id, values) {
-        const port = window.location.port
-        return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:${port}/account`,
+        const port = window.location.origin
+        return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=${port}/account`,
             { shippingAddress: values },
             { headers }
         ).then((res) => {
