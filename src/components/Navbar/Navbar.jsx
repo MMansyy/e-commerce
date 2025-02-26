@@ -77,10 +77,6 @@ export default function Navbar() {
                 }} className=' text-2xl cursor-pointer text-gray-700 hover:text-gray-800 transition-all duration-200' />
                 {user &&
                   <>
-                    <div className='w-screen h-screen fixed top-0 left-0 z-10' onClick={() => {
-                      setuser(false)
-                    }
-                    }></div>
                     <div id="userDropdown" className="z-10 absolute top-8 border-2 right-0 bg-white divide-y divide-gray-200 rounded-lg shadow-sm w-44 ">
                       <div className="px-4 py-3 text-sm text-gray-900 ">
                         <p className='text-base font-semibold'>{tokeninfo.name || 'User'}</p>
@@ -105,6 +101,11 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      {user &&
+
+        <div className='w-screen h-screen fixed inset-0 z-9' onClick={() => {
+          setuser(false)
+        }}></div>}
     </nav >
 
   )
