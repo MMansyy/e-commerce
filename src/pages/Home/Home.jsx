@@ -172,49 +172,6 @@ export default function Home() {
                             >
                                 Us which over of signs divide dominion deep fill bring they're meat beho upon own earth without morning over third. Their male dry. They are great appear whose land fly grass.
                             </motion.p>
-                            {/* <motion.div className="relative">
-                                <motion.button
-                                    whileHover="hover"
-                                    initial="initial"
-                                    animate="animate"
-                                    className="relative bg-green-600 hover:bg-green-800 transition duration-500 text-white px-8 py-3 rounded-full font-medium overflow-hidden group"
-                                >
-                                    <motion.div
-                                        className="absolute inset-0 bg-green-700"
-                                        initial={{ scale: 0, opacity: 0 }}
-                                        whileHover={{ scale: 1, opacity: 1 }}
-                                        transition={{ duration: 0.9 }}
-                                    />
-                                    <motion.div className="relative z-10 flex items-center">
-                                        <span>Shop Now</span>
-                                        <motion.div
-                                            className="ml-2"
-                                            initial={{ x: 0 }}
-                                            whileHover={{ x: [0, 5, 0] }}
-                                            transition={{
-                                                duration: 1,
-                                                repeat: Infinity,
-                                                repeatType: "loop",
-                                                ease: "easeInOut"
-                                            }}
-                                        >
-                                            <BsArrowRight className="h-5 w-5" />
-                                        </motion.div>
-                                    </motion.div>
-                                    <motion.div
-                                        className="absolute inset-0 bg-gradient-to-r from-green-400/0 via-green-400/30 to-green-400/0"
-                                        initial={{ x: "-100%" }}
-                                        whileHover={{ x: "100%" }}
-                                        transition={{ duration: 0.6, ease: "easeInOut" }}
-                                    />
-                                </motion.button>
-                                <motion.div
-                                    className="absolute inset-0 -z-10 bg-green-400  rounded-full blur-lg"
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    whileHover={{ opacity: 0.4, scale: 1.2 }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                            </motion.div> */}
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
@@ -292,7 +249,7 @@ export default function Home() {
                 </Link>
             </motion.div>
             <motion.div
-                initial={{ opacity: 0, y: 200 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true, amount: 0.1 }}
@@ -309,7 +266,7 @@ export default function Home() {
             </motion.div>
 
             <motion.div className="font-[sans-serif] p-12 md:p-24 bg-white "
-                initial={{ opacity: 0, y: 200 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true, amount: 0.1 }}
@@ -339,10 +296,7 @@ export default function Home() {
                     </div>
                 </div>
             </motion.div>
-
-            {/* </div> */}
             {loader && !isLoading && <Loader />}
-            {/* <VelocityText /> */}
         </>
     )
 }
